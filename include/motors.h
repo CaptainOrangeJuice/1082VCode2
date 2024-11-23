@@ -1,7 +1,7 @@
 #pragma once
 #include "vex.h"
 #include <iostream>
-#define yap(text) std::cout<<text<<std::endl;
+#define SCREAM(TEXT) std::cout<<TEXT<<std::endl;
 #define printToConsole(text) std::cout<<text<<std::endl;
 
 inline extern vex::brain Brain = vex::brain();
