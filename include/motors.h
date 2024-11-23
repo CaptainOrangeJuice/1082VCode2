@@ -2,7 +2,9 @@
 #include "vex.h"
 #include <iostream>
 #define SCREAM(TEXT) std::cout<<TEXT<<std::endl;
+#define yap(text) std::cout<<text<<std::endl;
 #define printToConsole(text) std::cout<<text<<std::endl;
+#define BOOM(text) std::cout<<TEXT<<std::endl;
 
 inline extern vex::brain Brain = vex::brain();
 inline extern vex::motor Fl = vex::motor(vex::PORT6, vex::ratio18_1, true); 
