@@ -13,7 +13,7 @@
 #include "turnPID.h"
 
 using namespace vex;
-//using namespace _PID;
+using namespace _PID;
 
 // A global instance of competition
 competition Competition;
