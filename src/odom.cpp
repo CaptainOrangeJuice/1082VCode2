@@ -5,8 +5,8 @@ using namespace std;
 class odom {
     private:
     //std::vector<int> _positionVector = {1, 2, 3, 4};
-    double tL /*Distance from the tracking center to the left tracking wheel*/= 4.625;
-    double tR /*Distance from the tracking center to the right tracking wheel*/= 4.625;
+    double tL /*Distance from the tracking center to the left tracking wheel*/= 4.625;//TODO not impl
+    double tR /*Distance from the tracking center to the right tracking wheel*/= 4.625;//TODO not impl
     //double tR /*Distance from the tracking center to the right tracking wheel*/= 4.625;
     double L /*The distance that the left-side tracking wheel has traveled*/;
     double R /*The distance that the right-side tracking wheel has traveled*/;

@@ -3,7 +3,7 @@
 #include "vex.h"
 #include "motors.h"
 
-namespace _PID {
+/*namespace _PID {
     extern double position;
     extern double error;
     extern double i; // integral
@@ -17,11 +17,25 @@ namespace _PID {
     extern double prev;
     extern int _time;
     extern bool errorChanging;
-}
+}*/
 
-using namespace _PID;
+//using namespace _PID;
 class PID
 {
+
+    double position;
+    double error;
+    double i; // integral
+    double d;
+    int target;
+    double kp;
+    double ki;
+    double kd;
+    double drive;
+    void runPID();
+    double prev;
+    int _time;
+    bool errorChanging;
     
 public:
     PID();

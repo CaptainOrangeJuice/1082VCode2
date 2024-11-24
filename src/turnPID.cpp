@@ -48,7 +48,7 @@ public:
         }
 
         
-        std::cout<<abs(position - target)<<std::endl;
+        std::cout<<fabs(position - target)<<std::endl;
         // std::cout<<error<<std::endl;
 
         Brain.Screen.clearLine();
@@ -79,7 +79,7 @@ public:
         target = targetVal;
         // std::cout<<position<<std::endl;
         // wait(1, vex::sec);
-        while (abs(position - target) > 2) {
+        while (fabs(position - target) > 2) {
             tpUpdate();
             // std::cout<<"h"<<std::endl;
             // std::cout<<position<<std::endl;

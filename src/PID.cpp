@@ -3,7 +3,7 @@
 #include "motors.h"
 #include "PID.h"
 
-using namespace _PID;
+//using namespace _PID;
     
     PID::PID() {
     }
@@ -25,10 +25,10 @@ using namespace _PID;
 
     void PID::update()
     {
-        position = ((abs(Tl.position(vex::turns)) + abs(Tr.position(vex::turns))) / 2.0) * M_PI * 3.25;
+        position = ((fabs(Tl.position(vex::turns)) + fabs(Tr.position(vex::turns))) / 2.0) * M_PI * 3.25;
         error = target - position;
 
-        if (error = prev) {
+        if (error == prev) {
             printToConsole("The error is not changing. PID stopping.");
             Brain.Screen.print("The error is not changing. PID stopping.");
             errorChanging = false;
@@ -59,7 +59,7 @@ using namespace _PID;
     {
         reset();
         target = targetVal;
-        while (abs(position - target) > 0.2 && errorChanging) {
+        while (fabs(position - target) > 0.2 && errorChanging) {
             update();
             //spinAll(true, (kp * error) + (ki * i) + (kd * d));
             Left.spin(vex::forward, (kp * error) + (ki * i) + (kd * d), vex::pct);
