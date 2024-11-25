@@ -240,8 +240,24 @@ void usercontrol(void) {
   double slow = 1;
   bool pneumaticsBool = false;
   bool pressingBool = false;
+  std::string input;
   while (1) {
-    
+    std::cin >> input;
+    if (input == "W") {
+      Left.spin(forward, 60 * slow * 0.8, pct);
+      Right.spin(forward, 60 * slow * 0.8, pct);
+    } else if (input == "S") {
+      Left.spin(reverse, 60 * slow * 0.8, pct);
+      Right.spin(reverse, 60 * slow * 0.8, pct);
+    } else if (input == "A") {
+      Left.spin(reverse, 60 * slow * 0.8, pct);
+      Right.spin(forward, 60 * slow * 0.8, pct);
+    } else if (input == "D") {
+      Left.spin(forward, 60 * slow * 0.8, pct);
+      Right.spin(reverse, 60 * slow * 0.8, pct);
+    }
+
+
     if (Controller1.ButtonUp.pressing()){
       slow = 0.4;
     } else {
