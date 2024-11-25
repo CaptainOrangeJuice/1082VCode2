@@ -36,6 +36,7 @@ class PID
     double prev;
     int _time = 1;
     bool errorChanging = true;
+    bool stop = false;
     
 public:
     PID();
@@ -45,6 +46,8 @@ public:
     void update();
 
     bool isStopped();
+
+    void stopPID();
 
     void runPID(double targetVal, double timeLimit);
 };

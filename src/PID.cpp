@@ -47,8 +47,17 @@
     }
 
     bool PID::isStopped() {
-        if ((Left.velocity(vex::rpm) + Right.velocity(vex::rpm))/2 <= 1 || ((error == prev) && (Left.velocity(vex::rpm) + Right.velocity(vex::rpm))/2 <= 1)) return true;
+        if ((Left.velocity(vex::rpm) + Right.velocity(vex::rpm))/2 <= 1 || ((error == prev) && (Left.velocity(vex::rpm) + Right.velocity(vex::rpm))/2 <= 1) || stop) return true;
         else return false;
+    }
+
+    void PID::stopPID() {
+        errorChanging = false;
+        Left.stop(vex::brake);
+        Right.stop(vex::brake);
+        Left.setStopping(vex::coast);
+        Right.setStopping(vex::coast);
+        stop = true;
     }
 
     void PID::runPID(double targetVal, double timeLimit)

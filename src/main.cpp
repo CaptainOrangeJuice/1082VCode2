@@ -242,20 +242,39 @@ void usercontrol(void) {
   bool pressingBool = false;
   std::string input;
   while (1) {
+    //keyboard controls because no controller yay
     std::cin >> input;
-    if (input == "W") {
+    if (input == "W" || input == "w") {
       Left.spin(forward, 60 * slow * 0.8, pct);
       Right.spin(forward, 60 * slow * 0.8, pct);
-    } else if (input == "S") {
+    } else if (input == "S" || input == "s") {
       Left.spin(reverse, 60 * slow * 0.8, pct);
       Right.spin(reverse, 60 * slow * 0.8, pct);
-    } else if (input == "A") {
+    } 
+    if (input == "A" || input == "a") {
       Left.spin(reverse, 60 * slow * 0.8, pct);
       Right.spin(forward, 60 * slow * 0.8, pct);
-    } else if (input == "D") {
+    } else if (input == "D" || input == "d") {
       Left.spin(forward, 60 * slow * 0.8, pct);
       Right.spin(reverse, 60 * slow * 0.8, pct);
     }
+
+    if (input == "J" || input == "j") {
+      pid.stopPID();
+    }
+
+    if (input == "1") { pid.runPID(1, 2); 
+    } else if (input == "2") { pid.runPID(2, 2); 
+    } else if (input == "3") { pid.runPID(3, 2); 
+    } else if (input == "4") { pid.runPID(4, 2); 
+    } else if (input == "5") { pid.runPID(5, 2); 
+    } else if (input == "6") { pid.runPID(6, 2); 
+    } else if (input == "7") { pid.runPID(7, 2); 
+    } else if (input == "8") { pid.runPID(8, 2); 
+    } else if (input == "9") { pid.runPID(9, 2); 
+    } else if (input == "0") { pid.runPID(10, 2); 
+    } else if (input == "1") { pid.runPID(20, 2); }
+
 
 
     if (Controller1.ButtonUp.pressing()){
