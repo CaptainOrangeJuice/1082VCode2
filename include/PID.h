@@ -28,14 +28,14 @@ class PID
     double i; // integral
     double d;
     int target;
-    double kp;
-    double ki;
-    double kd;
+    double kp = 0.5;
+    double ki = 0;
+    double kd = 0.1;
     double drive;
     void runPID();
     double prev;
-    int _time;
-    bool errorChanging;
+    int _time = 1;
+    bool errorChanging = true;
     
 public:
     PID();

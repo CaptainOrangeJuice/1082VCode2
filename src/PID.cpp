@@ -17,10 +17,6 @@
         Right.resetPosition();
         _time = 0;
         position = 0;
-        kp = 0.5;
-        ki = 0;
-        kd = 0.1;
-        errorChanging = true;
     }
 
     void PID::update()
