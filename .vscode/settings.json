@@ -31,7 +31,6 @@
 		"typeinfo": "cpp"
 	},
 	"editor.tokenColorCustomizations": {
-		"comments": "#fff585",
 		"textMateRules": [
 			{
 				"scope": "vexlog.error",
@@ -66,6 +65,8 @@
 		]
 	},
 	"editor.semanticTokenColorCustomizations": {},
-	"workbench.colorCustomizations": {},
-	"editor.fontFamily": "'Mono'"
+	"workbench.colorCustomizations": {
+		"editor.background": "#ffffff",
+	},
+	"editor.fontFamily": "Consolas, 'Courier New', monospace"
 }

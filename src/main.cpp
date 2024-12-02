@@ -97,7 +97,7 @@ void autonomous(void) {
 
     // turnPid.runTurnPID(-33.690067526);
 
-    pid.runPID(2, 2);
+    pid.runPID(36, 2);
 
     turnPid.runTurnPID(180);
 
@@ -109,21 +109,23 @@ void autonomous(void) {
 
     turnPid.runTurnPID(-90/*.690067526*/);
 
-    pid.runPID(2, 2);
+    pid.runPID(24, 2);
 
-    turnPid.runTurnPID(-90);
+    turnPid.runTurnPID(90);
 
-    clampPneumatics.set(true);
+    pid.runPID(24, 2);
+
+    // clampPneumatics.set(true);
 
     spin_For(2, belt);
 
     turnPid.runTurnPID(135);
 
-    pid.runPID(1 * sqrt(2), 2);
+    pid.runPID(24 * sqrt(2), 2);
     
-    turnPid.runTurnPID(153.4349488);
+    // turnPid.runTurnPID(153.4349488);
 
-    pid.runPID(2 * sqrt(10), 2);
+    // pid.runPID(2 * sqrt(10), 2);
     Brain.Screen.print("Auton 1 (Red Left) completed.");
 
   } else if (autonNum == 2) {
@@ -132,18 +134,31 @@ void autonomous(void) {
     // pid.runPID(43.2/2);
     // belt.spinFor(2, sec);
     pid.runPID(8, 2);
+    
     turnPid.runTurnPID(180);
+    
     pid.runPID(-2, 2);
+    
     clampPneumatics.set(true);
+    
     spin_For(2, belt);
+    
     pid.runPID(-2, 2);
+    
     turnPid.runTurnPID(90);
+    
     pid.runPID(3, 2);
+    
     // belt.spinFor(2, sec);
+    
     spin_For(2, belt);
+    
     turnPid.runTurnPID(-135);
+    
     pid.runPID(1 * sqrt(2), 2);
+    
     Brain.Screen.print("Auton 2 (Red Right) completed.");
+    
 
   } if (autonNum == 3) {
     // Blue left
@@ -232,6 +247,7 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+//in main.cpp
 void usercontrol(void) {
   // User control code here, inside the loop
   // simga 🗣️🗣️🔥🔥

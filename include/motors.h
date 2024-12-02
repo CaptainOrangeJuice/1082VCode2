@@ -7,12 +7,12 @@
 #define BOOM(text) std::cout<<TEXT<<std::endl;
 
 inline extern vex::brain Brain = vex::brain();
-inline extern vex::motor Fl = vex::motor(vex::PORT6, vex::ratio18_1, false); 
-inline extern vex::motor Fr = vex::motor(vex::PORT5, vex::ratio18_1, true);
+inline extern vex::motor Fl = vex::motor(vex::PORT6, vex::ratio18_1, true); 
+inline extern vex::motor Fr = vex::motor(vex::PORT5, vex::ratio18_1, false);
 inline extern vex::motor Tl = vex::motor(vex::PORT4, vex::ratio18_1, false); //Motor on the left side above the others
 inline extern vex::motor Tr = vex::motor(vex::PORT3, vex::ratio18_1, true); //Motor on the right side above the others
-inline extern vex::motor Bl = vex::motor(vex::PORT2, vex::ratio18_1, false);
-inline extern vex::motor Br = vex::motor(vex::PORT1, vex::ratio18_1, true);
+inline extern vex::motor Bl = vex::motor(vex::PORT2, vex::ratio18_1, true);
+inline extern vex::motor Br = vex::motor(vex::PORT1, vex::ratio18_1, false);
 inline extern vex::motor belt = vex::motor(vex::PORT10, vex::ratio18_1, false);
 inline extern vex::motor ladyBrownL = vex::motor(vex::PORT8, vex::ratio36_1, false);
 inline extern vex::motor ladyBrownR = vex::motor(vex::PORT9, vex::ratio36_1, false);
