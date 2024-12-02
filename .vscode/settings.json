@@ -67,5 +67,5 @@
 	},
 	"editor.semanticTokenColorCustomizations": {},
 	"workbench.colorCustomizations": {},
-	"editor.fontFamily": "'mono'"
+	"editor.fontFamily": "'Mono'"
 }

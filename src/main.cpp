@@ -76,7 +76,6 @@ void autonomous(void) {
       wait(10, vex::msec);
   }
   InertialSensor.resetHeading();*/
-  //fein
 
   wait(3000, msec);
   Brain.Screen.print(autonNum);
@@ -240,42 +239,67 @@ void usercontrol(void) {
   double slow = 1;
   bool pneumaticsBool = false;
   bool pressingBool = false;
-  std::string input;
+  int distance = 0;
   while (1) {
-    //keyboard controls because no controller yay
-    std::cin >> input;
-    if (input == "W" || input == "w") {
-      Left.spin(forward, 60 * slow * 0.8, pct);
-      Right.spin(forward, 60 * slow * 0.8, pct);
-    } else if (input == "S" || input == "s") {
-      Left.spin(reverse, 60 * slow * 0.8, pct);
-      Right.spin(reverse, 60 * slow * 0.8, pct);
-    } 
-    if (input == "A" || input == "a") {
-      Left.spin(reverse, 60 * slow * 0.8, pct);
-      Right.spin(forward, 60 * slow * 0.8, pct);
-    } else if (input == "D" || input == "d") {
-      Left.spin(forward, 60 * slow * 0.8, pct);
-      Right.spin(reverse, 60 * slow * 0.8, pct);
-    }
 
-    if (input == "J" || input == "j") {
+    //PID test controls
+    if (Controller1.ButtonDown.pressing()) {
       pid.stopPID();
     }
-
-    if (input == "1") { pid.runPID(1, 2); 
-    } else if (input == "2") { pid.runPID(2, 2); 
-    } else if (input == "3") { pid.runPID(3, 2); 
-    } else if (input == "4") { pid.runPID(4, 2); 
-    } else if (input == "5") { pid.runPID(5, 2); 
-    } else if (input == "6") { pid.runPID(6, 2); 
-    } else if (input == "7") { pid.runPID(7, 2); 
-    } else if (input == "8") { pid.runPID(8, 2); 
-    } else if (input == "9") { pid.runPID(9, 2); 
-    } else if (input == "0") { pid.runPID(10, 2); 
-    } else if (input == "1") { pid.runPID(20, 2); }
-
-
+    
+    if (!Controller1.ButtonX.pressing() && !Controller1.ButtonY.pressing()) {
+      if (Controller1.ButtonB.pressing()) {
+        printToConsole("PID running");
+        pid.runPID(distance, 10);
+        wait(5, sec);
+      } else if (Controller1.ButtonLeft.pressing() && Controller1.ButtonRight.pressing()) {
+        distance = 0;
+        printToConsole(distance);
+        wait(0.1, sec);
+      }  else if (Controller1.ButtonRight.pressing()) {
+        distance++;
+        printToConsole(distance);
+        wait(0.1, sec);
+      } else if (Controller1.ButtonLeft.pressing()) {
+        distance--;
+        printToConsole(distance);
+        wait(0.1, sec);
+      }
+    } else if (Controller1.ButtonX.pressing()){
+      if (Controller1.ButtonLeft.pressing() && Controller1.ButtonRight.pressing()) {
+        pid.kpUpdate(0-pid.kpUpdate(0));
+        pid.kpUpdate(0.5);
+        printToConsole(pid.kpUpdate(0));
+        wait(0.1, sec);
+      }  else if (Controller1.ButtonRight.pressing()) {
+        pid.kpUpdate(0.1);
+        printToConsole(pid.kpUpdate(0));
+        wait(0.1, sec);
+      } else if (Controller1.ButtonLeft.pressing()) {
+        pid.kpUpdate(-0.1);
+        printToConsole(pid.kpUpdate(0));
+        wait(0.1, sec);
+      }
+    } else if (Controller1.ButtonY.pressing()){
+      if (Controller1.ButtonLeft.pressing() && Controller1.ButtonRight.pressing()) {
+        pid.kdUpdate(0-pid.kdUpdate(0));
+        pid.kdUpdate(0.1);
+        printToConsole(pid.kdUpdate(0));
+        wait(0.1, sec);
+      }  else if (Controller1.ButtonRight.pressing()) {
+        pid.kdUpdate(0.1);
+        wait(0.01, sec);
+        printToConsole(pid.kdUpdate(0));
+        wait(0.1, sec);
+      } else if (Controller1.ButtonLeft.pressing()) {
+        pid.kdUpdate(-0.1);
+        wait(0.01, sec);
+        printToConsole(pid.kdUpdate(0));
+        wait(0.1, sec);
+      }
+    }
+  
+    // printToConsole(((fabs(Left.position(vex::turns)) + fabs(Right.position(vex::turns))) / 2.0));
 
     if (Controller1.ButtonUp.pressing()){
       slow = 0.4;
@@ -286,7 +310,7 @@ void usercontrol(void) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based  on feedback from the joysticks.
-    Left.spin(forward, (Controller1.Axis3.position() + Controller1.Axis1.position()) * slow * 0.8, pct);
+    Left.spin(forward, (Controller1.Axis3.position()+ Controller1.Axis1.position()) * slow * 0.8, pct);
     Right.spin(forward, (Controller1.Axis3.position() - Controller1.Axis1.position()) * slow * 0.8, pct);
 
     /*Brain.screen.print(Controller1.Axis3.position());
