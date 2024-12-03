@@ -45,7 +45,7 @@ void pre_auton(void) {
   InertialSensor.resetHeading();
 
   //Set auton number for each time you upload the program
-  autonNum = 5;
+  autonNum = 1;
 }
 
 void spin_For(double time, motor Motor) {
@@ -84,47 +84,18 @@ void autonomous(void) {
   // ..........................................................................
   if (autonNum == 1) {
     // Red left
-    // Brain.Screen.print(getPos());
-    /*while (1) {
-      Brain.Screen.print(Mr.position(vex::turns));
-      wait(1, sec);
-      Brain.Screen.print(Ml.position(vex::turns));
-      wait(2, sec);
-      Brain.Screen.clearScreen();
-      //std::cout<<<<std::endl; 
-      //std::cout<<Ml.position(vex::turns)<<std::endl;
-    }*/
-
-    // turnPid.runTurnPID(-33.690067526);
 
     pid.runPID(36, 2);
-
     turnPid.runTurnPID(180);
-
-    // pid.runPID(-1);
-
     clampPneumatics.set(true);
-
     spin_For(2, belt);
-
     turnPid.runTurnPID(-90/*.690067526*/);
-
     pid.runPID(24, 2);
-
     turnPid.runTurnPID(90);
-
     pid.runPID(24, 2);
-
-    // clampPneumatics.set(true);
-
     spin_For(2, belt);
-
     turnPid.runTurnPID(135);
-
     pid.runPID(24 * sqrt(2), 2);
-    
-    // turnPid.runTurnPID(153.4349488);
-
     // pid.runPID(2 * sqrt(10), 2);
     Brain.Screen.print("Auton 1 (Red Left) completed.");
 
@@ -133,30 +104,18 @@ void autonomous(void) {
     // turnPid.runTurnPID(33.690067526);
     // pid.runPID(43.2/2);
     // belt.spinFor(2, sec);
-    pid.runPID(8, 2);
     
+    pid.runPID(36, 2);
     turnPid.runTurnPID(180);
-    
-    pid.runPID(-2, 2);
-    
     clampPneumatics.set(true);
-    
     spin_For(2, belt);
-    
-    pid.runPID(-2, 2);
-    
-    turnPid.runTurnPID(90);
-    
-    pid.runPID(3, 2);
-    
-    // belt.spinFor(2, sec);
-    
+    turnPid.runTurnPID(90/*.690067526*/);
+    pid.runPID(24, 2);
+    turnPid.runTurnPID(-90);
+    pid.runPID(24, 2);
     spin_For(2, belt);
-    
     turnPid.runTurnPID(-135);
-    
-    pid.runPID(1 * sqrt(2), 2);
-    
+    pid.runPID(24 * sqrt(2), 2);
     Brain.Screen.print("Auton 2 (Red Right) completed.");
     
 
@@ -165,25 +124,17 @@ void autonomous(void) {
     // turnPid.runTurnPID(-33.690067526);
     // pid.runPID(43.2);
     
-    pid.runPID(4, 2);
-
+    pid.runPID(36, 2);
     turnPid.runTurnPID(180);
-
-    pid.runPID(-0.5, 2);
-
     clampPneumatics.set(true);
-
-    // belt.spinFor(2, sec);
     spin_For(2, belt);
-
-    pid.runPID(-0.5, 2);
-
+    turnPid.runTurnPID(-90/*.690067526*/);
+    pid.runPID(24, 2);
     turnPid.runTurnPID(90);
-    pid.runPID(1.5, 2);
-    // belt.spinFor(2, sec);
+    pid.runPID(24, 2);
     spin_For(2, belt);
     turnPid.runTurnPID(135);
-    pid.runPID(0.5 * sqrt(2), 2);
+    pid.runPID(24 * sqrt(2), 2);
 
     Brain.Screen.print("Auton 3 (Blue Left) completed.");
 
@@ -192,43 +143,46 @@ void autonomous(void) {
     // turnPid.runTurnPID(33.690067526);
     // pid.runPID(43.2/2);
     // belt.spinFor(2, sec);
-    pid.runPID(8, 2);
-
+    pid.runPID(36, 2);
     turnPid.runTurnPID(180);
-
-    pid.runPID(-2, 2);
-
     clampPneumatics.set(true);
     spin_For(2, belt);
-    pid.runPID(-2, 2);
-    turnPid.runTurnPID(90);
-    pid.runPID(3, 2);
-    // belt.spinFor(2, sec);
+    turnPid.runTurnPID(90/*.690067526*/);
+    pid.runPID(24, 2);
+    turnPid.runTurnPID(-90);
+    pid.runPID(24, 2);
     spin_For(2, belt);
     turnPid.runTurnPID(-135);
-    pid.runPID(1 * sqrt(2), 2);
+    pid.runPID(24 * sqrt(2), 2);
 
     // turnPid.runTurnPID(153.4349488);
     // pid.runPID(2 * sqrt(10));
     Brain.Screen.print("Auton 4 (Blue Right) completed.");
   } else if (autonNum == 10) {
-    pid.runPID(-0.5, 2);
+    pid.runPID(-6, 2);
     clampPneumatics.set(true);
-    pid.runPID(24, 2);
+    pid.runPID(-6, 2);
     turnPid.runTurnPID(180);
+    pid.runPID(24, 2);
     // belt.spinFor(2,sec);
     spin_For(2, belt);
     turnPid.runTurnPID(-90);
     pid.runPID(24, 2);
     turnPid.runTurnPID(0);
+
+
+    //TEST THIS TO SEE IF IT DOES THEM AT THE SAME TIME
     pid.runPID(36, 2);
-    // belt.spinFor(10,sec);
     spin_For(10, belt);
+
+
+    // belt.spinFor(10,sec);
     pid.runPID(-12, 2);
     turnPid.runTurnPID(-90);
     pid.runPID(12, 2);
-    turnPid.runTurnPID(180-26.5650511771);
-    pid.runPID(12, 2);
+    turnPid.runTurnPID(180+26.5650511771);
+    pid.runPID(-12, 2);
+    clampPneumatics.set(false);
   } else if (autonNum == 5) {
     // wait(4, sec);
     // Left.spinFor(1, sec);
