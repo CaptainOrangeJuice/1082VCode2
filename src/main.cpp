@@ -213,7 +213,7 @@ void usercontrol(void) {
   while (1) {
 
     //PID test controls
-    /*if (Controller1.ButtonDown.pressing()) {
+    if (Controller1.ButtonDown.pressing()) {
       pid.stopPID();
     }
     
@@ -267,7 +267,7 @@ void usercontrol(void) {
         printToConsole(pid.kdUpdate(0));
         wait(0.1, sec);
       }
-    }*/
+    }
   
     // printToConsole(((fabs(Left.position(vex::turns)) + fabs(Right.position(vex::turns))) / 2.0));
 
